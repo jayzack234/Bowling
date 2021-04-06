@@ -1,0 +1,16 @@
+﻿<!--Get a list of team classes-->
+@model IEnumerable<Team>
+<!--This will reset the display, or take the user "home"-->
+<a class="btn btn-block" asp-action="Index" asp-controller="Home" asp-route-teamtypeid="">Home</a>
+<br />
+
+
+<!--Looping through each object-->
+@foreach (var x in Model)
+{
+    <a class="btn btn-block @(x.TeamName == ViewBag.SelectedCategory ? "btn-primary" : "btn-outline-secondary")"
+       asp-action="Index" asp-controller="Home"
+       asp-route-teamtypeid="@x.TeamId"
+       asp-route-teamtype="@x.TeamName">@x.TeamName</a>
+    <br />
+}
